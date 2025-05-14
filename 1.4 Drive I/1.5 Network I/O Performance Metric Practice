@@ -1,0 +1,29 @@
+1.5.1 Installing Lab Tools
+Step 1 Install the network performance test tool iperf.
+dnf -y install iperf
+
+1.5.2 Checking the Network Connection Status
+Step 1 Check the network connection status.
+netstat -antulp
+
+1.5.3 Checking the Network Response Time
+ping www.huaweicloud.com -c 5
+
+1.5.4 Checking the Network Bandwidth
+
+Step 1 Start the service on an ECS.
+Use either ECS on the intranet as the server.
+[root@Server ~]# iperf3 -s
+-----------------------------------------------------------
+Server listening on 5201 (test #1)
+-----------------------------------------------------------
+
+Step 2 Test the intranet bandwidth on the client.
+You can see that the intranet bandwidth is about 4 Gbit/s.
+iperf3 -c 192.168.0.49 -t 20 -i 5
+
+
+Step 3 Check the throughput of the network interface.
+The throughput of the ens3 interface is about 500,000 kilobytes per second.
+sar -n DEV 2 1
+
