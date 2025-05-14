@@ -1,0 +1,24 @@
+1.4.1 Installing Lab Tools
+Step 1 Install the drive I/O test tool.
+dnf -y install fio
+
+
+Step 2 Create a directory for stress test data.
+mkdir /data
+
+1.4.2 Checking the Drive IOPS and Throughput
+Step 1 Perform a stress test on drive I/O performance.
+[root@openEuler ~]# fio -filename=/data/test.file -direct=1 -iodepth 1 -thread -rw=randrw -
+rwmixread=70 -ioengine=psync -bs=16k -size=2G -numjobs=10 -runtime=60 -group_reporting -
+name=test_r_w
+test_r_w: (g=0): rw=randrw, bs=(R) 16.0KiB-16.0KiB, (W) 16.0KiB-16.0KiB, (T) 16.0KiB-16.0KiB,
+ioengine=psync, iodepth=1
+...
+Step 2 Check the drive IOPS and throughput.
+Start another terminal. You can see that the IOPS of drive sda is 7,705 and the
+throughput is 120 Mbit/s.
+iostat -dh 3 3 
+
+
+Step 3 Check the IOPS and throughput of block device sda.
+sar -dh 3 3 
