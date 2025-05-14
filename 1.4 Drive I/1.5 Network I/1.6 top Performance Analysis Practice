@@ -1,0 +1,115 @@
+1.6 top Performance Analysis Practice
+The top command is a commonly used Linux performance analysis tool. It can display the
+resource usage of each process in real time, similar to Task Manager on Windows. The
+real-time system status view provides a summary of system information and a list of
+processes or threads currently managed by the Linux kernel. The system summary
+information and the type, order, and unit of process resources can be customized and
+stored permanently.
+
+
+1.6.1 Interactive Operations on the Main Interface
+Step 1 View the system information on the main interface of top.
+# top
+The following information is displayed from top to bottom: system time and load, task
+status, CPU usage, memory and virtual memory, and processes under the fields.
+
+Step 2 Move the cursor.
+Press the arrow keys to scroll and view fields and processes in the task area.
+
+Step 3 Customize the main interface.
+Key Function Key Function
+j
+Aligns texts to the
+left or right. 
+B
+Toggles the bold text
+mode.
+J
+Aligns numbers to
+the left or right. 
+z
+Toggles between the
+multicolor and
+monochrome mode.
+
+In this lab, numbers are left-aligned, texts are right-aligned, the multicolor mode is used,
+and keywords are in bold.
+Step 4 Adjust the information displayed in the summary area.
+Press keys for interactive commands to display or hide information in the summary area
+or adjust information display.
+Key Function
+l     Displays or hides the average system load.
+t     Displays or hides task and CPU statistics, and adjusts the
+display mode of CPU statistics.
+
+m     Displays or hides memory information, and adjusts the display
+mode of memory information.
+1     Toggles between per-CPU usage and average CPU usage.
+
+
+Step 5 Sort and modify fields in the task area.
+Press f to go to the field management page. You can check the meaning of each field,
+select required fields, and sort them.
+Key Function Key Function
+d    Shows or hides
+a field.
+s    Specifies the field by
+which processes will
+be sorted.
+Right     Selects a field.
+Left    Confirms the location of a field.
+Up/Down   Adjusts the location of a field.
+q     Exits the field management page.
+
+
+(2) By default, processes in the task area are sorted in descending order based on the
+selected field. You can press R to reverse the sorting order.
+
+
+
+Step 6 Adjust the information displayed in the task area.
+
+R
+Sorts process in ascending
+or descending order.
+
+n
+Sets the maximum number
+of processes for display.
+c
+Displays process names or
+startup commands. 
+x
+Toggles highlighting of the
+sorting column.
+V 
+Toggles the tree view. 
+y
+Toggles highlighting of
+running tasks.
+< / > 
+Switches the sorting field. 
+H
+Shows or hides thread
+information.
+
+
+In this lab, a maximum of five processes are displayed, the tree view is enabled to
+visualize parent-child process relationships, and the sorting field and running processes
+are highlighted.
+Step 7 Save the configuration permanently.
+Press W to save the modified configuration to a file. If the following information is
+displayed, the configuration is successfully saved:
+Wrote configuration to '/root/.config/procps/toprc'
+
+
+1.7 Quiz
+⚫ How do you adjust the frequency at which the system uses the swap space?
+Answer: Adjust the swappiness and priority of the swap space.
+⚫ What is the difference between buff and cache in memory performance metrics?
+Answer: buff is used to reduce the number of I/O responses and handle excessive
+resource accesses. cache is a compromise strategy used to handle speed mismatches and
+accelerate accesses.
+
+
+
