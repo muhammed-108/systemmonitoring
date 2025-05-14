@@ -1,0 +1,57 @@
+1.2.1 Installing Lab Tools
+Step 1 Install the system stress test tool stress.
+[root@openEuler ~]# dnf config-manager --add-repo
+https://repo.oepkgs.net/openeuler/rpm/openEuler-22.03-LTS/extras/x86_64/
+[root@openEuler ~]# dnf -y install stress
+Step 2 Install the thread stress test tool sysbench.
+dnf -y install sysbench
+Step 3 Install the system performance monitoring tool sysstat.
+dnf -y install sysstat
+1.2.2 Viewing CPU Usage
+Step 1 Perform a CPU performance stress test.
+[root@openEuler ~]# stress -c 2 -i 2 --timeout 300s &
+[1] 6042
+stress: info: [6042] dispatching hogs: 2 cpu, 2 io, 0 vm, 0 hdd
+
+
+Step 2 View the CPU usage.
+mpstat -P ALL 5 2 
+
+Step 3 Check the CPU usage of each process.
+
+ps aux --sort -&cpu
+
+Step 4 Check the average system load.
+[root@openEuler ~]# uptime
+02:39:52 up 1:45, 2 users, load average: 0.02, 0.47, 0.44
+
+
+
+1.2.3 Viewing Context Switches
+Step 1 Perform a context switch stress test.
+[root@openEuler ~]# sysbench --threads=4 --time=300 threads run &
+[1] 6086
+sysbench 1.0.20 (using system LuaJIT 2.1.0-beta3)
+Running the test with following options:
+Number of threads: 4
+...
+
+Step 2 Check system context switches.
+vmstat 3 5 
+
+
+Step 3 Check thread context switches.
+In the multi-threaded scenario, the system load increases as the number of CPU context
+switches per second reaches 3.2 million, accompanied by an increase in both voluntary
+and involuntary task switches.
+pidstat -w 5 2 -t | grep sysbench
+
+
+Step 4 Check the average system load.
+[root@openEuler ~]# uptime
+03:14:46 up 2:20, 2 users, load average: 4.90, 3.12, 1.89
+
+
+
+
+
